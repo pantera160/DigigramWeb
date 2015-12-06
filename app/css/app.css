@@ -29,7 +29,9 @@
   padding: 0;
 }
 
-
+.navbar{
+    background-color: #eee;
+}
 
 .USG-banner{
     background-image: url("https://www.usgprofessionals.be/images/default-source/logos/logo-usg-professionals.png");

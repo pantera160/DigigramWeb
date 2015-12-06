@@ -1,0 +1,44 @@
+<div id="content" ng-controller="DetailsCtrl">
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8" class="row">
+            <div class="col-md-3"><img class="img-circle" src="{{user.profilePicURI}}"><span
+                class="intern label-important to-left-2"><span ng-if="user.intern"><i
+                class="fa fa-home"></i></span><span
+                ng-if="!user.intern"><i class="fa fa-sign-out"></i></span></span>
+
+                <p><h2  class="text-center">{{user.firstName}} {{user.lastName}}</h2></p>
+            </div>
+            <div class="col-md-7 profile-list col-lg-offset-1">
+                <div class="row">
+                    <div class="col-md-2"><i class="fa fa-home icon-big"></i></div>
+                    <div class="col-md-5"><span ng-if="user.intern">Britselei 80</span><span ng-if="!user.intern">Bij de klant</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2"><i class="fa fa-file-text icon-big"></i></div>
+                    <div class="col-md-5">{{user.project.name}}</div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2">*skill*</div>
+                    <div class="col-md-5"><b>SKILLS: </b>
+
+                        <p><span ng-repeat="skill in user.project.skills">{{skill}}, </span></p></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2"><i class="fa fa-phone-square icon-big"></i></div>
+                    <div class="col-md-5">{{user.tel}}</div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2"><i class="fa fa-envelope-o icon-big"></i>
+                    </div>
+                    <div class="col-md-5">{{user.mail}}</div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2"><i class="fa fa-birthday-cake icon-big"></i></div>
+                    <div class="col-md-5">{{user.birthday}}
+                    </div>
+                </div>
+                <div class="col-md-2"></div>
+            </div>
+        </div>

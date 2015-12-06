@@ -19,8 +19,11 @@
 
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link href="dist/css/angular-tooltips.min.css" rel="stylesheet" type="text/css"/>
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/app.css">
+    <link rel="stylesheet" href="css/overview.css">
     <script src="js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
 <body>
@@ -34,13 +37,8 @@
     </div>
 </div>
 <div class="jumbotron" ui-view="view-breadcrumbs">
-    <div class="container">
-        <ol class="breadcrumb">
-            <li ng-repeat="breadcrumb in breadcrumbs"><a ui-sref="{{breadcrumb.link}}">{{breadcrumb.string}}</a></li>
-        </ol>
 </div>
-</div>
-<div id="content" ui-view="content"></div>
+<div ui-view="content"></div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 <script>window.jQuery || document.write('<script src="js/vendor/jquery-2.1.4.min.js"><\/script>')</script>
@@ -51,10 +49,13 @@
 <script src="dist/js/angular-ui-router.min.js"></script>
 <script src="js/overview.js"></script>
 <script src="js/app.js"></script>
+<script src="js/breadcrumbs.js"></script>
+<script src="js/details.js"></script>
 <script src="components/version/version.js"></script>
 <script src="components/version/version-directive.js"></script>
 <script src="components/version/interpolate-filter.js"></script>
 <script src="dist/js/bootstrap.min.js"></script>
+<script src="dist/js/angular-tooltips.min.js"></script>
 <script src="http://getbootstrap.com/assets/js/ie10-viewport-bug-workaround.js"></script>
 </body>
 </html>

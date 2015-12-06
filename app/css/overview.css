@@ -1,0 +1,59 @@
+.profile-large{
+    padding: 15px;
+    margin: 15px;
+}
+
+.intern{
+    position: absolute;
+    right: 0;
+    top:0;
+    font-size: 50px;
+}
+
+.profile-large-info{
+    padding: 20px;
+}
+
+.profile-name{
+    font-weight: bold;
+    font-size: 25px;
+    padding: 15px;
+    text-decoration: none;
+    color: #0f0f0f;
+    cursor: pointer;
+    width: 80%;
+}
+
+.fa-chevron-left{
+    padding-right: 5px;
+}
+
+.profile-small{
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.profile-small img{
+    width: 180px;
+    height: 180px;
+}
+
+.to-left-2{
+    right: 50px;
+}
+
+.icon-big{
+    font-size: 50px;
+}
+
+.profile-list div{
+    padding : 3px;
+}
+
+.profile-list p{
+    padding: 2px;
+}
+
+.padding-10{
+    padding: 25px;
+}

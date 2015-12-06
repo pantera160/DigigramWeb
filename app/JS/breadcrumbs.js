@@ -1,32 +1,42 @@
 /**
  * Created by Pantera on 03/12/15.
  */
-var app = angular.module('Breadcrumbs', ['ui.router']);
+var app = angular.module('USGDigigram.Breadcrumbs', ['ui.router']);
 
-app.controller('BreadcrumbCtrl', ['$scope', '$stateParams', function ($scope, $stateParams) {
+app.controller('BreadcrumbCtrl', ['$scope', 'DataRESTService', '$stateParams', function ($scope, DataRESTService, $stateParams) {
     $scope.breadcrumbs = [{
         'string': 'Home',
         'link': '#'
-    },{'string': 'ICT', 'link': '/ICT'}];
+    }];
 
-    console.log("Log: " + $stateParams)
+    var createBreadcrumbs = function () {
+        var url = "#";
+        if ($stateParams.dept) {
+            console.log('found dept');
+            url += '/' + $stateParams.dept;
+            $scope.breadcrumbs.push({
+                'string': $stateParams.dept,
+                'link': url
+            })
+        }
+        if($stateParams.id){
+            console.log("found id");
+            /*DataRESTService.getName($stateParams.id).then(function(response){
+                url += '/details/'+id;
+                $scope.breadcrumbs.push({
+                    'string': response,
+                    'link': url
+                })
+            });*/
+            url += '/details/'+$stateParams.id;
+            $scope.breadcrumbs.push({
+                'string': 'Tom Lecluyse',
+                'link': url
+            })
+        }
+    };
 
-/*var createBreadcrumbs = function () {
- console.log('creating breadcrumbs');
- console.log($routeParams);
- var url = "";
- console.log($scope.breadcrumbs);
- if ($routeParams.dept) {
- console.log('found dept');
- url += '/' + $routeParams.dept;
- $scope.breadcrumbs.push({
- 'string': $routeParams.dept,
- 'link': url
- })
- }
- else {
- console.log('no dept found');
- }*/
- }]);
+    createBreadcrumbs();
+}]);
 
 
