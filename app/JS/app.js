@@ -5,37 +5,70 @@ var app = angular.module('USGDigigram', [
     'ngRoute',
     'ui.router',
     'USGDigigram.version',
-    'USGDigigram.Overview'
+    'USGDigigram.Overview',
+    'USGDigigram.Breadcrumbs',
+    'USGDigigram.Details'
 ]);
 
 /*app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
-    $routeProvider.when('/:dept', {
-            templateUrl: 'templates/overview.html'
-        })
-        .otherwise({redirectTo: '/ICT'});
-}])
-;*/
+ $routeProvider.when('/:dept', {
+ templateUrl: 'templates/overview.html'
+ })
+ .otherwise({redirectTo: '/ICT'});
+ }])
+ ;*/
 
-app.config(['$urlRouterProvider', '$stateProvider', function($urlRouterProvider, $stateProvider){
+app.config(['$urlRouterProvider', '$stateProvider', function ($urlRouterProvider, $stateProvider) {
     $urlRouterProvider.otherwise('/ICT');
 
-    $stateProvider.state('dept',{
-        url: '/:dept',
-        views: {
-            "view-breadcrumbs" : {templateUrl: 'templates/breadcrumbs.html'},
-            "content" : {templateUlr: 'templates/overview.html'}
-        }
-    })
+    $stateProvider.state('dept', {
+            url: '/:dept',
+            views: {
+                "view-breadcrumbs": {
+                    templateUrl: 'templates/breadcrumbs.html',
+                },
+                "content": {
+                    templateUrl: 'templates/overview.html',
+                }
+            }
+        })
+        .state('details', {
+            url: '/:dept/details/:id',
+            views: {
+                "view-breadcrumbs": {
+                    templateUrl: 'templates/breadcrumbs.html',
+                },
+                "content": {
+                    templateUrl: 'templates/details.html',
+                }
+            }
+        })
 }]);
 
 app.service('DataRESTService', function ($http) {
     var initParams = {};
     this.initialise = function () {
         $http.get('resources/config.properties').then(function (result) {
-            initParams = result;
+            initParams = result.data;
+            console.log(initParams);
         });
         return initParams.RESTUrl;
     };
+
+    this.getManager = function(dept){
+        return $http({
+            method: 'GET',
+            url: initParams.RESTUrl + 'deptmanager/' + dept
+        });
+    };
+
+    this.getDeptMembers = function(dept){
+        return $http({
+            method: 'GET',
+            url: initParams.RESTUrl + 'ccmembers/' + dept
+        });
+    };
+
     this.getMembers = function (cc) {
         return $http({
             method: 'GET',

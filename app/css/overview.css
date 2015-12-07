@@ -38,8 +38,8 @@
     height: 180px;
 }
 
-.to-left-2{
-    right: 50px;
+.to-left-1{
+    right: 1em;
 }
 
 .icon-big{
@@ -54,6 +54,10 @@
     padding: 2px;
 }
 
-.padding-10{
+.padding-25{
     padding: 25px;
+}
+
+tooltip tip{
+    min-width: 150px;
 }

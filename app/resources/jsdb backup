@@ -1,0 +1,42 @@
+$scope.members = ["12345abcde6789nh", "12345abcde6789gs", "12345abcde6789rk", "12345abcde6789jl"];
+
+    $scope.members_profiles = {
+        "12345abcde6789nh" : {
+            'firstName' : 'Nadine',
+            'lastName' : 'Hermans',
+            'intern': false,
+            'profilePicURI' : 'https://usgprofessionalsbe.speakap.com/files/0f3d79d7ac0c7e94/profile-image',
+            'project' : {
+                'name' : 'Managing DevCC',
+                'context' : [{'name' : 'Management', 'area':'Management'}, {name:'Stress relieve', 'area':'management'}]
+            }
+        },
+        "12345abcde6789jl" : {
+        'firstName' : 'Jean-François',
+        'lastName' : 'Leys',
+        'intern': true,
+        'profilePicURI' : 'https://usgprofessionalsbe.speakap.com/files/0fae2476080c7a78/profile-image',
+        'project' : {
+            'name' : 'Managing BACC',
+            'context' : [{'name' : 'Management', 'area':'Management'}, {name:'Stress relieve', 'area':'management'}]
+        }},
+            "12345abcde6789rk" : {
+        'firstName' : 'Raf',
+        'lastName' : 'De Keersmaecker',
+        'intern': true,
+        'profilePicURI' : 'https://usgprofessionalsbe.speakap.com/files/0f66d5cc090c766c/profile-image',
+        'project' : {
+            'name' : 'Managing Infra CC',
+            'context' : [{'name' : 'Management', 'area':'Management'}, {name:'Stress relieve', 'area':'management'}]
+        }},
+        "12345abcde6789gs" : {
+            'firstName': 'Guy',
+            'lastName': 'Van der Sande',
+            'intern': false,
+            'profilePicURI': 'https://usgprofessionalsbe.speakap.com/files/0f6a6da2020c7f48/profile-image',
+            'project': {
+                'name': 'Managing BICC',
+                'context' : [{'name' : 'Management', 'area':'Management'}, {name:'Stress relieve', 'area':'management'}]
+            }
+        }
+    }

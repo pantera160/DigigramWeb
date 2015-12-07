@@ -2,13 +2,13 @@
     <div class="col-md-5">
         <div class="profile-large">
             <div class="row">
-                <div class="col-md-5 col-md-offset-4"><img class="img-circle" src="{{manager.profilePicURI}}"><span
+                <div class="col-md-5 col-md-offset-4"><img class="img-circle" ng-src="{{manager.profilePicURI}}"><span
                     class="intern label-important"><span ng-if="manager.intern"><i class="fa fa-home" ></i></span><span ng-if="!manager.intern"><i class="fa fa-sign-out"></i></span></span></div>
             </div>
             <div class="col-md-5 col-md-offset-4 text-center profile-large-info">
-                <a class="profile-name profile-link-details" href="#/{{dept}}/details/{{manager.id}}"><i class="fa fa-chevron-left"></i>{{manager.firstName}} {{manager.lastName}}</a>
+                <a class="profile-name profile-link-details" href="#/{{dept}}/details/{{manager.userId.id}}"><i class="fa fa-chevron-left"></i>{{manager.firstName}} {{manager.lastName}}</a>
                 <p><b>Current Project</b></p>
-                <p tooltips="" tooltip-side="bottom" tooltip-template="<p>Skills used: </p><p ng-repeat='skill in manager.project.skills'>{{skill}} </p>">{{manager.project.name}}</p>
+                <p tooltips="" tooltip-side="right" tooltip-template="<p><b>Skills used: </b></p><p ng-repeat='skill in manager.project.context'>{{skill.name}} </p>">{{manager.project.name}}</p>
                 <p></p>
             </div>
         </div>
@@ -16,13 +16,13 @@
     <div class="col-md-7">
         <div class="col-md-5 profile-small" ng-repeat="member in members">
             <div class="row">
-                <div class="col-md-6 col-md-offset-3"><img class="img-circle" src="{{members_profiles[member].profilePicURI}}"><span
+                <div class="col-md-6 col-md-offset-3"><img class="img-circle" ng-src="{{members_profiles[member].profilePicURI}}"><span
                     class="intern label-important"><span ng-if="members_profiles[member].intern"><i class="fa fa-home"></i></span><span ng-if="!members_profiles[member].intern"><i class="fa fa-sign-out"></i> </span></span></div>
             </div>
             <div class="text-center profile-small-info">
-                <p><a class="profile-name profile-link-details"><i class="fa fa-chevron-left"></i>{{members_profiles[member].firstName}} {{members_profiles[member].lastName}}</a></p>
+                <p><a class="profile-name profile-link-details" href="{{createUrl(member)}}"><i class="fa fa-chevron-left"></i>{{members_profiles[member].firstName}} {{members_profiles[member].lastName}}</a></p>
                 <p><b>Current Project</b></p>
-                <p tooltips="" tooltip-side="bottom" tooltip-template="<p>Skills used: </p><p ng-repeat='skill in members_profiles[member].project.skills'>{{skill}} </p>">{{members_profiles[member].project.name}}</p>
+                <p tooltips="" tooltip-side="right" tooltip-template="<p><b>Skills used: </b></p><p ng-repeat='skill in members_profiles[member].project.context'>{{skill.name}} </p>">{{members_profiles[member].project.name}}</p>
                 <p></p>
             </div>
         </div>

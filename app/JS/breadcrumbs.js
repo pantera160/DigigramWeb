@@ -21,19 +21,14 @@ app.controller('BreadcrumbCtrl', ['$scope', 'DataRESTService', '$stateParams', f
         }
         if($stateParams.id){
             console.log("found id");
-            /*DataRESTService.getName($stateParams.id).then(function(response){
-                url += '/details/'+id;
+            DataRESTService.getBasic($stateParams.id).then(function(response){
+                url += '/details/'+$stateParams.id;
                 $scope.breadcrumbs.push({
-                    'string': response,
+                    'string': response.data.firstName + " " + response.data.lastName,
                     'link': url
                 })
-            });*/
-            url += '/details/'+$stateParams.id;
-            $scope.breadcrumbs.push({
-                'string': 'Tom Lecluyse',
-                'link': url
-            })
-        }
+            });
+            }
     };
 
     createBreadcrumbs();
