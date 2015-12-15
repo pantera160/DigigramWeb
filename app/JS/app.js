@@ -18,8 +18,8 @@ var app = angular.module('USGDigigram', [
  }])
  ;*/
 
-app.config(['$urlRouterProvider', '$stateProvider', function ($urlRouterProvider, $stateProvider) {
-    $urlRouterProvider.otherwise('/ICT');
+app.config(['$urlRouterProvider', '$stateProvider', function ($urlRouterProvider, $stateProvider, breadcrumbs) {
+    $urlRouterProvider.otherwise('/management');
 
     $stateProvider.state('dept', {
             url: '/:dept',
@@ -43,6 +43,9 @@ app.config(['$urlRouterProvider', '$stateProvider', function ($urlRouterProvider
                 }
             }
         })
+        .state('home', {
+            url: '/'
+        })
 }]);
 
 app.service('DataRESTService', function ($http) {
@@ -55,14 +58,14 @@ app.service('DataRESTService', function ($http) {
         return initParams.RESTUrl;
     };
 
-    this.getManager = function(dept){
+    this.getManager = function (dept) {
         return $http({
             method: 'GET',
             url: initParams.RESTUrl + 'deptmanager/' + dept
         });
     };
 
-    this.getDeptMembers = function(dept){
+    this.getDeptMembers = function (dept) {
         return $http({
             method: 'GET',
             url: initParams.RESTUrl + 'ccmembers/' + dept
@@ -95,9 +98,16 @@ app.service('DataRESTService', function ($http) {
     };
 });
 
-app.run(['DataRESTService', function (DataRESTService) {
+app.run(['DataRESTService', 'Breadcrumbs', '$rootScope', function (DataRESTService, Breadcrumbs, $rootScope) {
     DataRESTService.initialise();
 }]);
+
+app.service('Breadcrumbs', function () {
+    this.breadcrumbs = [{
+        'string': 'Home',
+        'link': '#'
+    }];
+})
 
 
 

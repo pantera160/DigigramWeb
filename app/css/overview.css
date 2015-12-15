@@ -1,20 +1,20 @@
-.profile-large{
+.profile-large {
     padding: 15px;
     margin: 15px;
 }
 
-.intern{
+.intern {
     position: absolute;
     right: 0;
-    top:0;
+    top: 0;
     font-size: 50px;
 }
 
-.profile-large-info{
+.profile-large-info {
     padding: 20px;
 }
 
-.profile-name{
+.profile-name {
     font-weight: bold;
     font-size: 25px;
     padding: 15px;
@@ -24,40 +24,40 @@
     width: 80%;
 }
 
-.fa-chevron-left{
+.fa-chevron-left {
     padding-right: 5px;
 }
 
-.profile-small{
+.profile-small {
     padding-top: 20px;
     padding-bottom: 20px;
 }
 
-.profile-small img{
+.profile-small img {
     width: 180px;
     height: 180px;
 }
 
-.to-left-1{
-    right: 1em;
+.to-left-1 {
+    right: 5%;
 }
 
-.icon-big{
+.icon-big {
     font-size: 50px;
 }
 
-.profile-list div{
-    padding : 3px;
+.profile-list div {
+    padding: 3px;
 }
 
-.profile-list p{
+.profile-list p {
     padding: 2px;
 }
 
-.padding-25{
+.padding-25 {
     padding: 25px;
 }
 
-tooltip tip{
+tooltip tip {
     min-width: 150px;
 }

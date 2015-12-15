@@ -1,5 +1,10 @@
 /* app css stylesheet */
 
+html, body {
+    margin: 0;
+    height: 100%;
+}
+
 .menu {
     list-style: none;
     border-bottom: 0.1em solid black;
@@ -52,4 +57,23 @@
 
 .container {
     width: 90%;
+}
+
+.block {
+    position: relative;
+    display: block;
+    width: 180px;
+}
+
+.block-large {
+    position: relative;
+    display: block;
+    width: 260px;
+}
+
+#footer {
+    background-color: #eee;
+    bottom: 0;
+    position: fixed;
+    width: 100%;
 }

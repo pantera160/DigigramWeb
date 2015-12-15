@@ -1,9 +1,11 @@
-<div id="content" ng-controller="OverviewCtrl" class="row">
+<div id="content" ng-controller="OverviewCtrl">
     <div class="col-md-5 col-sm-12">
         <div class="profile-large">
             <div class="row">
-                <div class="col-md-5 col-md-offset-4 col-sm-5 col-sm-offset-5"><img class="img-circle" ng-src="{{manager.profilePicURI}}"><span class="intern label-important"><span
-                    ng-if="manager.intern"><i class="fa fa-home"></i></span><span ng-if="!manager.intern"><i class="fa fa-sign-out"></i></span></span></div>
+                <div class="col-md-5 col-md-offset-4 col-sm-5 col-sm-offset-5">
+                    <div class="block-large"><img class="img-circle" ng-src="{{manager.profilePicURI}}"><span class="intern label-important"><span
+                        ng-if="manager.intern"><i class="fa fa-home"></i></span><span ng-if="!manager.intern"><i class="fa fa-sign-out"></i></span></span></div>
+                </div>
             </div>
             <div class="col-md-5 col-md-offset-4 col-sm-5 col-sm-offset-5 text-center profile-large-info">
                 <a class="profile-name profile-link-details" href="#/{{dept}}/details/{{manager.userId.id}}"><i class="fa fa-chevron-left"></i>{{manager.firstName}} {{manager.lastName}}</a>
@@ -19,14 +21,18 @@
     <div class="col-md-7 col-sm-12">
         <div class="col-md-5 profile-small col-sm-5" ng-repeat="member in members">
             <div class="row">
-                <div class="col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3"><img class="img-circle" ng-src="{{members_profiles[member].profilePicURI}}">
-                    <span class="intern label-important"><span ng-if="members_profiles[member].intern">
-                        <i class="fa fa-home"></i>
-                    </span>
-                        <span ng-if="!members_profiles[member].intern">
-                            <i class="fa fa-sign-out"></i>
+                <div class="col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3">
+                    <div class="block">
+                        <img class="img-circle" ng-src="{{members_profiles[member].profilePicURI}}">
+                        <span class="intern label-important">
+                            <span ng-if="members_profiles[member].intern">
+                                <i class="fa fa-home"></i>
+                            </span>
+                            <span ng-if="!members_profiles[member].intern">
+                                <i class="fa fa-sign-out"></i>
+                            </span>
                         </span>
-                    </span>
+                    </div>
                 </div>
             </div>
             <div class="text-center profile-small-info">
@@ -44,4 +50,4 @@
         </div>
     </div>
 </div>
-<div id="footer" class="modal-footer">FOOTER</div>
+
