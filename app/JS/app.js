@@ -7,7 +7,8 @@ var app = angular.module('USGDigigram', [
     'USGDigigram.version',
     'USGDigigram.Overview',
     'USGDigigram.Breadcrumbs',
-    'USGDigigram.Details'
+    'USGDigigram.Details',
+    'USGDigigram.Employer_Overview'
 ]);
 
 /*app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
@@ -43,8 +44,16 @@ app.config(['$urlRouterProvider', '$stateProvider', function ($urlRouterProvider
                 }
             }
         })
-        .state('home', {
-            url: '/'
+        .state('company', {
+            url: '/company/:company',
+            views: {
+                "view-breadcrumbs": {
+                    templateUrl: 'templates/breadcrumbs.html',
+                },
+                "content": {
+                    templateUrl: 'templates/employer_overview.html',
+                }
+            }
         })
 }]);
 
@@ -89,6 +98,18 @@ app.service('DataRESTService', function ($http) {
             method: 'GET',
             url: initParams.RESTUrl + 'advanced/' + eid
         });
+    };
+    this.getCompany = function (companyname) {
+        return $http({
+            method: 'GET',
+            url: initParams.RESTUrl + 'company/' + companyname
+        })
+    };
+    this.getCompanyEmployees = function (companyname) {
+        return $http({
+            method: 'GET',
+            url: initParams.RESTUrl + 'companyemployees/' + companyname
+        })
     };
     this.getTest = function () {
         return $http({
