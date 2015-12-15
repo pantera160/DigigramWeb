@@ -5,6 +5,10 @@ html, body {
     height: 100%;
 }
 
+a {
+    cursor: pointer;
+}
+
 .menu {
     list-style: none;
     border-bottom: 0.1em solid black;

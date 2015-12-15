@@ -61,3 +61,31 @@
 tooltip tip {
     min-width: 150px;
 }
+
+.employer {
+    position: absolute;
+    left: -50px;
+    top: 0;
+
+}
+
+.employer img {
+    opacity: 50;
+    height: 100px;
+    width: 100px;
+}
+
+.employer-small {
+    position: absolute;
+    left: -25px;
+    top: 0;
+}
+
+.employer-small img {
+    height: 50px;
+    width: 50px;
+}
+
+.block-inline {
+    display: inline-block;
+}
