@@ -3,6 +3,7 @@
 html, body {
     margin: 0;
     height: 100%;
+    overflow-y: hidden;
 }
 
 a {
@@ -57,6 +58,7 @@ a {
     padding-top: 55px;
     border-bottom-right-radius: 10px;
     border-bottom-left-radius: 10px;
+    width: 100%;
 }
 
 .container {
@@ -115,4 +117,10 @@ a {
 
 #content div{
     padding-bottom: 20px;
+}
+
+.scrollable{
+    overflow-y: scroll;
+    overflow-x: hidden;
+    height: 80vh;
 }
