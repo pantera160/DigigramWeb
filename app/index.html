@@ -41,16 +41,27 @@
         </button>
     </div>
     <div class="collapse navbar-collapse navbar-ex1-collapse">
-        <div class="col-sm-3 col-md-3 pull-right text-right">
+        <div class="col-sm-3 col-md-3 pull-right text-right" ng-controller="SearchCtrl as searchVm">
             <form class="navbar-form" role="search">
                 <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search" name="srch-term" id="srch-term">
+                    <input type="text" class="form-control" placeholder="Search" ng-change="searchVm.search()" ng-model="searchVm.searchString" ng- id="srch-term" ng-focus="searchVm.focus = true"
+                           ng-blur="searchVm.onBlur()">
 
                     <div class="input-group-btn">
                         <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
                     </div>
                 </div>
             </form>
+            <div class="search" ng-if="searchVm.focus && searchVm.searchResults.length > 0">
+                <div ng-repeat="result in searchVm.searchResults" class="row searchclick" ng-click="searchVm.goTo(result.userId.id)">
+                    <div class="col-md-4" style="float: left">
+                        <img class="img-circle profile-image-small" ng-src="{{result.profilePicURI}}">
+                    </div>
+                    <div class="col-md-8 vertical-center">
+                        <h2>{{result.firstName}} {{result.lastName}}</h2>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
@@ -69,6 +80,7 @@
 <script src="dist/js/angular-ui-router.min.js"></script>
 <script src="js/overview.js"></script>
 <script src="js/app.js"></script>
+<script src="js/search.js"></script>
 <script src="js/breadcrumbs.js"></script>
 <script src="js/details.js"></script>
 <script src="js/employer_overview.js"></script>

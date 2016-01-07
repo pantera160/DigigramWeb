@@ -8,19 +8,13 @@ var app = angular.module('USGDigigram', [
     'USGDigigram.Overview',
     'USGDigigram.Breadcrumbs',
     'USGDigigram.Details',
-    'USGDigigram.Employer_Overview'
+    'USGDigigram.Employer_Overview',
+    'USGDigigram.Search'
 ]);
 
-/*app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
- $routeProvider.when('/:dept', {
- templateUrl: 'templates/overview.html'
- })
- .otherwise({redirectTo: '/ICT'});
- }])
- ;*/
 
 app.config(['$urlRouterProvider', '$stateProvider', function ($urlRouterProvider, $stateProvider, breadcrumbs) {
-    $urlRouterProvider.otherwise('/management');
+    $urlRouterProvider.otherwise('/Management_Team');
 
     $stateProvider.state('dept', {
             url: '/:dept',
@@ -117,6 +111,12 @@ app.service('DataRESTService', function ($http) {
             url: initParams.RESTUrl + 'test'
         });
     };
+    this.search = function (searchString) {
+        return $http({
+            method: 'GET',
+            url: initParams.RESTUrl + 'search/' + searchString
+        })
+    }
 });
 
 app.run(['DataRESTService', 'Breadcrumbs', '$rootScope', function (DataRESTService, Breadcrumbs, $rootScope) {
