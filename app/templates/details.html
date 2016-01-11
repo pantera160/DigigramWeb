@@ -1,43 +1,43 @@
 <div id="content" ng-controller="DetailsCtrl">
     <div>
         <div class="col-md-2"></div>
-        <div class="col-md-8" class="row">
-            <div class="col-md-3 text-center">
+        <div class="col-md-8 scrollable" class="row">
+            <div class="col-md-4 text-center">
                 <div class="block-large"><img class="img-circle" ng-src="{{user.profilePicURI}}">
                     <span class="employer label-important"><a ng-href="#/company/{{user.employer.name}}"><img ng-src="{{user.employer.iconURI}}"></a></span>
                 <span class="intern label-important to-left-1"><span ng-if="user.intern"><i
-                    class="fa fa-home"></i></span><span
-                    ng-if="!user.intern"><i class="fa fa-sign-out"></i></span></span>
+                    class="flaticon-house158"></i></span><span
+                    ng-if="!user.intern"><i class="flaticon-sign4"></i></span></span>
                 </div>
                 <h2 class="text-center">{{user.firstName}} {{user.lastName}}</h2>
             </div>
             <div class="col-md-7 profile-list col-lg-offset-1">
                 <div class="row">
-                    <div class="col-md-2"><i class="fa fa-home icon-big"></i></div>
+                    <div class="col-md-2"><i class="flaticon-house158"></i></div>
                     <div class="col-md-5"><span ng-if="user.intern">Britselei 80</span><span ng-if="!user.intern">Bij de klant</span>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-2"><i class="fa fa-file-text icon-big"></i></div>
+                    <div class="col-md-2"><i class="flaticon-new100"></i></div>
                     <div class="col-md-5">{{user.project.name}}</div>
                 </div>
                 <div class="row">
-                    <div class="col-md-2">*skill*</div>
-                    <div class="col-md-5"><b>SKILLS: </b>
+                    <div class="col-md-2"><i class="flaticon-exercise65"></i></div>
+                    <div class="col-md-5"><h4>SKILLS: </h4>
 
                         <p><span ng-repeat="skill in user.project.context">{{skill.name}}, </span>...</p></div>
                 </div>
                 <div class="row">
-                    <div class="col-md-2"><i class="fa fa-phone-square icon-big"></i></div>
+                    <div class="col-md-2"><i class="flaticon-telephone60"></i></div>
                     <div class="col-md-5">{{user.tel}}</div>
                 </div>
                 <div class="row">
-                    <div class="col-md-2"><i class="fa fa-envelope-o icon-big"></i>
+                    <div class="col-md-2"><i class="flaticon-text70"></i>
                     </div>
                     <div class="col-md-5">{{user.email}}</div>
                 </div>
                 <div class="row">
-                    <div class="col-md-2"><i class="fa fa-birthday-cake icon-big"></i></div>
+                    <div class="col-md-2"><i class="flaticon-baker4"></i></div>
                     <div class="col-md-5">{{user.birthday}}
                     </div>
                 </div>

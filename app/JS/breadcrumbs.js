@@ -9,9 +9,10 @@ app.controller('BreadcrumbCtrl', ['$scope', 'DataRESTService', '$stateParams', '
     var createBreadcrumbs = function () {
         var url = "#";
         if ($stateParams.dept) {
+            var deptname = $stateParams.dept.replace(/_/g, " ");
             console.log('found dept');
             for (var i = 0; i < $scope.breadcrumbs.length; i++) {
-                if ($scope.breadcrumbs[i].string === $stateParams.dept) {
+                if ($scope.breadcrumbs[i].string === deptname) {
                     Breadcrumbs.breadcrumbs = [];
                     for (var j = 0; j < i; j++) {
                         Breadcrumbs.breadcrumbs.push($scope.breadcrumbs[j]);
@@ -22,7 +23,7 @@ app.controller('BreadcrumbCtrl', ['$scope', 'DataRESTService', '$stateParams', '
             }
             url += '/' + $stateParams.dept;
             $scope.breadcrumbs.push({
-                'string': $stateParams.dept,
+                'string': deptname,
                 'link': url
             })
         }
