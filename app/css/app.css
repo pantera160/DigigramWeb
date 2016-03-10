@@ -115,20 +115,13 @@ a {
     cursor: pointer;
 }
 
-#content > div{
-    padding-bottom: 20px;
-    margin-bottom: 50px;
+#content {
+    margin-bottom: 20px;
+    overflow: hidden;
 }
 
-.scrollable{
-    overflow-y: auto;
-    overflow-x: visible;
-    padding-left: 35px;
-    height: 75vh;
-}
-
-.profile-list > .row > .col-md-5{
-    display: flex;
-    align-items: center;
-    height: 63px;
+.scrollable {
+    overflow-y: scroll;
+    overflow-x: hidden;
+    height: 80vh;
 }
