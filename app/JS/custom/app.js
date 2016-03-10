@@ -9,14 +9,23 @@ var app = angular.module('USGDigigram', [
     'USGDigigram.Breadcrumbs',
     'USGDigigram.Details',
     'USGDigigram.Employer_Overview',
-    'USGDigigram.Search'
+    'USGDigigram.Search',
+    'USGDigigram.Admin'
 ]);
 
 
 app.config(['$urlRouterProvider', '$stateProvider', function ($urlRouterProvider, $stateProvider, breadcrumbs) {
     $urlRouterProvider.otherwise('/Management_Team');
 
-    $stateProvider.state('dept', {
+    $stateProvider.state('admin', {
+            url: '/admin',
+            views: {
+                "content": {
+                    templateUrl: 'templates/admin.html'
+                }
+            }
+        })
+        .state('dept', {
             url: '/:dept',
             views: {
                 "view-breadcrumbs": {
@@ -116,6 +125,25 @@ app.service('DataRESTService', function ($http) {
             method: 'GET',
             url: initParams.RESTUrl + 'search/' + searchString
         })
+    };
+    this.runUpdate = function () {
+        return $http({
+            method: 'GET',
+            url: initParams.DBControllerURL + 'run'
+        })
+    };
+    this.getSpeakapEntries = function () {
+        return $http({
+            method: 'GET',
+            url: initParams.DBControllerURL + 'speakap'
+        })
+    };
+    this.addSpeakap = function (speakapuser) {
+        return $http({
+            method: 'POST',
+            url: initParams.DBControllerURL + addspeakap,
+            data: speakapuser
+        });
     }
 });
 
@@ -128,7 +156,7 @@ app.service('Breadcrumbs', function () {
         'string': 'Home',
         'link': '#'
     }];
-})
+});
 
 
 
