@@ -1,0 +1,64 @@
+<div id="subcontent" class="" ng-controller="SpeakapCtrl as sc">
+    <div class="col-md-10 col-md-offset-1" ng-show="sc.overview">
+        <p>Showing {{sc.amount.number}} of {{sc.speakaps.length}} found results.</p>
+        <input type="search" ng-model="q" placeholder="filter name..." aria-label="filter speakap"/>
+        <table>
+            <thead>
+            <tr>
+                <th colspan="3"></th>
+                <th>EID</th>
+                <th>Email</th>
+                <th>First name</th>
+                <th>Last name</th>
+                <th>Birthday</th>
+                <th>Tel</th>
+                <th>Profile picture URL</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="speakap in sc.speakaps | filter : q | limitTo:sc.start:sc.amount">
+                <td></td>
+                <td><i class="icon-edit-sign" ng-click="sc.edit(speakap.EID)"></i></td>
+                <td><i class="icon-remove-sign" ng-click="sc.delete(speakap.EID)"></i></td>
+                <td>{{speakap.EID}}</td>
+                <td>{{speakap.email}}</td>
+                <td>{{speakap.firstname}}</td>
+                <td>{{speakap.lastname}}</td>
+                <td>{{speakap.birthday}}</td>
+                <td>{{speakap.tel}}</td>
+                <td>{{speakap.profilePicURL}}</td>
+            </tr>
+            </tbody>
+        </table>
+        <table>
+            <tbody>
+            <tr id="preferences">
+                <td class="placeholder"></td>
+                <td><input type="button" value=" >" title="Next"></td>
+                <td><input type="button" value=" >>" title="Last"></td>
+                <td>Number of rows: <select ng-model="sc.amount"
+                                            ng-options="amount.number for amount in sc.amounts"></select>
+                </td>
+                <td></td>
+            </tr>
+            </tbody>
+        </table>
+        <div>
+            <input type="button" ng-click="sc.createNew()" value="Add new employee">
+        </div>
+    </div>
+    <div ng-show="sc.create">
+        <form id="myForm" class="block-inline">
+            <input type="text" ng-model="sc.newEmployee.EID" placeholder="EID..." ng-minlength="16" ng-maxlength="16"
+                   required>
+            <input type="email" ng-model="sc.newEmployee.email" placeholder="Email...">
+            <input type="text" ng-model="firstname" placeholder="First name..." required>
+            <input ng-model="sc.newEmployee.lastname" type="text" placeholder="Last name..." required>
+            <input type="date" ng-model="sc.newEmployee.birthday" placeholder="Birthday (yyyy-MM-dd)">
+            <input type="text" ng-model="sc.newEmployee.tel" placeholder="Tel...">
+            <input type="text" ng-model="sc.newEmployee.profilePicURL" placeholder="Enter profile picture URL" required>
+        </form>
+        <input type="button" ng-click="sc.addSpeakap()" value="Save">
+        <input type="button" ng-click="sc.create = false; sc.overview = true;" value="Cancel">
+    </div>
+</div>

@@ -1,0 +1,40 @@
+<div id="admincontent" ng-controller="AdminCtrl as ac">
+    <h1>Admin Page</h1>
+
+    <div>
+        <h2>Data update</h2>
+        <button type="button" ng-click="ac.runUpdate()">Update</button>
+    </div>
+    <div ng-if="update">
+        <ul>
+            <li ng-repeat="error in ac.errors">{{error}}</li>
+        </ul>
+    </div>
+    <div id="overview" class="col-md-10 col-md-offset-1">
+        <h2>Data overview</h2>
+
+        <div class="col-md-4">
+            <button ng-click="ac.clickDept()">Departments</button>
+        </div>
+        <div class="col-md-4">
+            <button ng-click="ac.clickEmployees()">Employees</button>
+        </div>
+        <div class="col-md-4">
+            <button ng-click="ac.clickSpeakap()">Speakap</button>
+        </div>
+    </div>
+    <div ng-if="ac.depts">
+        <div ng-include="'templates/subparts/depts.html'"></div>
+
+    </div>
+    <div ng-if="ac.employees">
+        <div ng-include="'templates/subparts/employees.html'"></div>
+
+    </div>
+    <div ng-if="ac.speakap">
+        <div ng-include="'templates/subparts/speakap.html'"></div>
+
+    </div>
+</div>
+
+
