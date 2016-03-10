@@ -93,8 +93,11 @@ tooltip tip {
 
 .centered-text {
     display: flex;
-    justify-content: center;
     align-items: center;
     height: 63px;
     text-align: left;
+}
+
+.breadcrumb {
+
 }

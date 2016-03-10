@@ -14,7 +14,7 @@ var app = angular.module('USGDigigram', [
 
 
 app.config(['$urlRouterProvider', '$stateProvider', function ($urlRouterProvider, $stateProvider, breadcrumbs) {
-    $urlRouterProvider.otherwise('/Management_Team');
+    $urlRouterProvider.otherwise('/Dircom');
 
     $stateProvider.state('dept', {
             url: '/:dept',
