@@ -1,6 +1,6 @@
 <div id="subcontent" class="" ng-controller="SpeakapCtrl as sc">
     <div class="col-md-10 col-md-offset-1" ng-show="sc.overview">
-        <p>Showing {{sc.amount.number}} of {{sc.speakaps.length}} found results.</p>
+        <p>Showing up to {{sc.amount.number}} of {{sc.speakaps.length}} found results.</p>
         <input type="search" ng-model="q" placeholder="filter name..." aria-label="filter speakap"/>
         <table>
             <thead>
@@ -13,6 +13,8 @@
                 <th>Birthday</th>
                 <th>Tel</th>
                 <th>Profile picture URL</th>
+                <th></th>
+                <th></th>
             </tr>
             </thead>
             <tbody>
@@ -27,6 +29,8 @@
                 <td>{{speakap.birthday}}</td>
                 <td>{{speakap.tel}}</td>
                 <td>{{speakap.profilePicURL}}</td>
+                <td ng-click="sc.edit(speakap.EID)">edit</td>
+                <td ng-click="sc.delete(speakap.EID)">delete</td>
             </tr>
             </tbody>
         </table>
@@ -34,8 +38,10 @@
             <tbody>
             <tr id="preferences">
                 <td class="placeholder"></td>
-                <td><input type="button" value=" >" title="Next"></td>
-                <td><input type="button" value=" >>" title="Last"></td>
+                <td><input type="button" value=" <<" title="First" ng-click="sc.start = 0"></td>
+                <td><input type="button" value=" <" title="Previous" ng-click="sc.start = sc.start - sc.amount"></td>
+                <td><input type="button" value=" >" title="Next" ng-click="sc.start = sc.start + sc.amount"></td>
+                <td><input type="button" value=" >>" title="Last" ng-click="sc.start = sc.speakaps.length - sc.amount"></td>
                 <td>Number of rows: <select ng-model="sc.amount"
                                             ng-options="amount.number for amount in sc.amounts"></select>
                 </td>

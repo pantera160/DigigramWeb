@@ -38,34 +38,6 @@ app.controller('AdminCtrl', ['DataRESTService', function (DataRESTService) {
 
 }]);
 
-app.controller('DeptsCtrl', ['DataRESTService', function (DataRESTService) {
-    var self = this;
-    self.departments = {};
-    self.addDepartment = function () {
-
-    };
-}]);
-
-app.controller('EmployeesCtrl', ['DataRESTService', function (DataRESTService) {
-    var self = this;
-    self.overview = true;
-    self.create = false;
-    self.employees = {};
-    self.createNew = function () {
-        self.overview = false;
-        self.create = true;
-    };
-    self.addEmployee = function () {
-
-    };
-    self.delete = function ($id) {
-
-    };
-    self.edit = function ($id) {
-
-    }
-}]);
-
 app.controller('SpeakapCtrl', ['DataRESTService', function (DataRESTService) {
     var self = this;
     self.overview = true;
@@ -92,8 +64,58 @@ app.controller('SpeakapCtrl', ['DataRESTService', function (DataRESTService) {
     self.start = 0;
 
     self.speakaps = [];
-    //self.speakaps = DataRESTService.getSpeakapEntries();
+    self.speakaps = DataRESTService.getSpeakapEntries();
 }]);
 
+app.controller('DeptCtrl', ['DataRESTService', function (DataRESTService) {
+    var self = this;
+    self.overview = true;
+    self.create = false;
+    self.newDept = {};
+    self.createNew = function () {
+        self.overview = false;
+        self.create = true;
+    };
+    self.addDept = function () {
+        self.create = false;
+        self.overview = true;
+        DataRESTService.addDept(self.newDept);
+    };
+    self.amounts = [{number: 25}, {number: 50}, {number: 100}, {number: 250}];
+    self.amount = self.amounts[0];
+    self.start = 0;
+
+    self.depts = [];
+    self.depts = DataRESTService.getAllDepts();
+}]);
+
+app.controller('EmployeeCtrl', ['DataRESTService', function (DataRESTService) {
+    var self = this;
+    self.overview = true;
+    self.create = false;
+    self.newEmployee = {};
+    self.createNew = function () {
+        self.overview = false;
+        self.create = true;
+    };
+    self.addEmployee = function () {
+        self.create = false;
+        self.overview = true;
+        DataRESTService.addEmployee(self.newEmployee);
+    };
+    self.amounts = [{number: 25}, {number: 50}, {number: 100}, {number: 250}];
+    self.amount = self.amounts[0];
+    self.start = 0;
+
+    self.employees = [];
+    self.employees = DataRESTService.getAllEmployees();
+
+    self.delete = function ($id) {
+
+    };
+    self.edit = function ($id) {
+
+    }
+}]);
 
 

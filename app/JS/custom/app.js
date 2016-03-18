@@ -141,7 +141,7 @@ app.service('DataRESTService', function ($http) {
     this.addSpeakap = function (speakapuser) {
         return $http({
             method: 'POST',
-            url: initParams.DBControllerURL + addspeakap,
+            url: initParams.DBControllerURL + "addspeakap",
             data: speakapuser
         });
     }

@@ -1,3 +1,48 @@
-<div id="subcontent" ng-controller="EmployeesCtrl">
+<div id="subcontent" ng-controller="EmployeesCtrl as ec">
+    <div class="col-md-10 col-md-offset-1" ng-show="ec.overview">
+        <p>Showing up to {{ec.amount.number}} of {{ec.employees.length}} found results.</p>
+        <input type="search" ng-model="q" placeholder="filter name..." aria-label="filter speakap"/>
+        <table class="employeesoverview">
+            <thead>
+            <tr>
 
+            </tr>
+            </thead>
+            <tbody class="employeesbody">
+            <tr ng-repeat="dept in depts | filter : q | limitTo:ec.start:ec.amount">
+
+                <td ng-click="ec.edit(dept.id)">edit</td>
+                <td ng-click="ec.delete(dept.id)">delete</td>
+            </tr>
+            </tbody>
+        </table>
+
+        <table>
+            <tbody>
+            <tr id="preferences">
+                <td class="placeholder"></td>
+                <td><input type="button" value=" <<" title="First" ng-click="ec.start = 0"></td>
+                <td><input type="button" value=" <" title="Previous" ng-click="ec.start = ec.start - ec.amount"></td>
+                <td><input type="button" value=" >" title="Next" ng-click="ec.start = ec.start + ec.amount"></td>
+                <td><input type="button" value=" >>" title="Last" ng-click="ec.start = ec.employees.length - ec.amount"></td>
+                <td>Number of rows: <select ng-model="ec.amount"
+                                            ng-options="amount.number for amount in ec.amounts"></select>
+                </td>
+                <td></td>
+            </tr>
+            </tbody>
+        </table>
+
+        <div>
+            <button type="button">Create new employee</button>
+        </div>
+    </div>
+    <div ng-show="ec.create">
+        <form id="myForm" class="block-inline">
+            <input type="text" ng-model="" placeholder="Department name">
+            <input type="text" ng-model="" placeholder="Manager EID">
+        </form>
+        <input type="button" ng-click="dc.addDept()" value="Save">
+        <input type="button" ng-click="dc.create = false; dc.overview = true;" value="Cancel">
+    </div>
 </div>
