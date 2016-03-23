@@ -135,14 +135,41 @@ app.service('DataRESTService', function ($http) {
     this.getSpeakapEntries = function () {
         return $http({
             method: 'GET',
-            url: initParams.DBControllerURL + 'speakap'
+            url: initParams.DBControllerURL + 'speakaps'
         })
     };
     this.addSpeakap = function (speakapuser) {
         return $http({
             method: 'POST',
-            url: initParams.DBControllerURL + "addspeakap",
+            url: initParams.DBControllerURL + 'newspeakap',
             data: speakapuser
+        });
+    };
+    this.deleteSpeakap = function (id) {
+        return $http({
+            method: 'DELETE',
+            url: initParams.DBControllerURL + 'deletespeakap',
+            data: id
+        });
+    };
+    this.getAllDepts = function () {
+        return $http({
+            method: 'GET',
+            url: initParams.DBControllerURL + 'departments'
+        });
+    };
+    this.deleteDept = function (id) {
+        return $http({
+            method: 'DELETE',
+            url: initParams.DBControllerURL + 'deletedepartment',
+            data: id
+        });
+    };
+    this.addDept = function (dept) {
+        return $http({
+            method: 'POST',
+            url: initParams.DBControllerURL + 'newdepartment',
+            data: dept
         });
     }
 });

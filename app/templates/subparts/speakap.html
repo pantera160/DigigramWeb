@@ -1,6 +1,6 @@
 <div id="subcontent" class="" ng-controller="SpeakapCtrl as sc">
     <div class="col-md-10 col-md-offset-1" ng-show="sc.overview">
-        <p>Showing up to {{sc.amount.number}} of {{sc.speakaps.length}} found results.</p>
+        <p>Showing {{sc.start}} to {{sc.start + sc.amount.number}} of {{sc.speakaps.length}} found results.</p>
         <input type="search" ng-model="q" placeholder="filter name..." aria-label="filter speakap"/>
         <table>
             <thead>
@@ -18,10 +18,10 @@
             </tr>
             </thead>
             <tbody>
-            <tr ng-repeat="speakap in sc.speakaps | filter : q | limitTo:sc.start:sc.amount">
+            <tr ng-repeat="speakap in sc.speakaps | filter : q | limitTo:sc.amount.number:sc.start">
                 <td></td>
-                <td><i class="icon-edit-sign" ng-click="sc.edit(speakap.EID)"></i></td>
-                <td><i class="icon-remove-sign" ng-click="sc.delete(speakap.EID)"></i></td>
+                <td ng-click="sc.edit(speakap.EID)">edit</td>
+                <td ng-click="sc.delete(speakap.EID)">delete</td>
                 <td>{{speakap.EID}}</td>
                 <td>{{speakap.email}}</td>
                 <td>{{speakap.firstname}}</td>
@@ -29,8 +29,6 @@
                 <td>{{speakap.birthday}}</td>
                 <td>{{speakap.tel}}</td>
                 <td>{{speakap.profilePicURL}}</td>
-                <td ng-click="sc.edit(speakap.EID)">edit</td>
-                <td ng-click="sc.delete(speakap.EID)">delete</td>
             </tr>
             </tbody>
         </table>
@@ -39,9 +37,12 @@
             <tr id="preferences">
                 <td class="placeholder"></td>
                 <td><input type="button" value=" <<" title="First" ng-click="sc.start = 0"></td>
-                <td><input type="button" value=" <" title="Previous" ng-click="sc.start = sc.start - sc.amount"></td>
-                <td><input type="button" value=" >" title="Next" ng-click="sc.start = sc.start + sc.amount"></td>
-                <td><input type="button" value=" >>" title="Last" ng-click="sc.start = sc.speakaps.length - sc.amount"></td>
+                <td><input type="button" value=" <" title="Previous" ng-click="sc.start = sc.start - sc.amount.number">
+                </td>
+                <td><input type="button" value=" >" title="Next" ng-click="sc.start = sc.start + sc.amount.number"></td>
+                <td><input type="button" value=" >>" title="Last"
+                           ng-click="sc.start = sc.speakaps.length - sc.amount.number">
+                </td>
                 <td>Number of rows: <select ng-model="sc.amount"
                                             ng-options="amount.number for amount in sc.amounts"></select>
                 </td>
@@ -58,7 +59,7 @@
             <input type="text" ng-model="sc.newEmployee.EID" placeholder="EID..." ng-minlength="16" ng-maxlength="16"
                    required>
             <input type="email" ng-model="sc.newEmployee.email" placeholder="Email...">
-            <input type="text" ng-model="firstname" placeholder="First name..." required>
+            <input type="text" ng-model="sc.newEmployee.firstname" placeholder="First name..." required>
             <input ng-model="sc.newEmployee.lastname" type="text" placeholder="Last name..." required>
             <input type="date" ng-model="sc.newEmployee.birthday" placeholder="Birthday (yyyy-MM-dd)">
             <input type="text" ng-model="sc.newEmployee.tel" placeholder="Tel...">

@@ -53,7 +53,7 @@ app.controller('SpeakapCtrl', ['DataRESTService', function (DataRESTService) {
         DataRESTService.addSpeakap(self.newEmployee);
     };
     self.delete = function ($id) {
-        DataRESTService.deleteSpeakap(self.newEmployee.EID);
+        DataRESTService.deleteSpeakap($id);
     };
     self.edit = function ($id) {
 
@@ -63,8 +63,9 @@ app.controller('SpeakapCtrl', ['DataRESTService', function (DataRESTService) {
     self.amount = self.amounts[0];
     self.start = 0;
 
-    self.speakaps = [];
-    self.speakaps = DataRESTService.getSpeakapEntries();
+    DataRESTService.getSpeakapEntries().then(function (result) {
+        self.speakaps = result.data;
+    });
 }]);
 
 app.controller('DeptCtrl', ['DataRESTService', function (DataRESTService) {
@@ -86,7 +87,12 @@ app.controller('DeptCtrl', ['DataRESTService', function (DataRESTService) {
     self.start = 0;
 
     self.depts = [];
-    self.depts = DataRESTService.getAllDepts();
+    DataRESTService.getAllDepts().then(function (result) {
+        self.depts = result.data;
+    });
+    self.delete = function ($id) {
+        DataRESTService.deleteDept($id);
+    };
 }]);
 
 app.controller('EmployeeCtrl', ['DataRESTService', function (DataRESTService) {
@@ -107,14 +113,15 @@ app.controller('EmployeeCtrl', ['DataRESTService', function (DataRESTService) {
     self.amount = self.amounts[0];
     self.start = 0;
 
-    self.employees = [];
-    self.employees = DataRESTService.getAllEmployees();
+    DataRESTService.getAllEmployees().then(function (result) {
+        self.employees = result.data;
+    });
 
     self.delete = function ($id) {
 
     };
     self.edit = function ($id) {
-
+        DataRESTService.deleteEmployee($id);
     }
 }]);
 

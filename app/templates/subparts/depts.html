@@ -1,6 +1,6 @@
-<div id="subcontent" ng-controller="DeptsCtrl as dc">
+<div id="subcontent" ng-controller="DeptCtrl as dc">
     <div class="col-md-10 col-md-offset-1" ng-show="dc.overview">
-        <p>Showing up to {{sc.amount.number}} of {{sc.depts.length}} found results.</p>
+        <p>Showing {{dc.start}} to {{dc.start + dc.amount.number}} of {{dc.depts.length}} found results.</p>
         <input type="search" ng-model="q" placeholder="filter name..." aria-label="filter speakap"/>
         <table class="deptoverview">
             <thead>
@@ -12,9 +12,9 @@
             </tr>
             </thead>
             <tbody class="deptsbody">
-            <tr ng-repeat="dept in depts | filter : q | limitTo:dc.start:dc.amount">
-                <td>{{dept.name}}</td>
-                <td>{{dept.manager}}</td>
+            <tr ng-repeat="dept in dc.depts | filter : q | limitTo:dc.amount.number:dc.start">
+                <td>{{dept.dept_name}}</td>
+                <td>{{dept.reportsTo.id}}</td>
                 <td ng-click="dc.edit(dept.id)">edit</td>
                 <td ng-click="dc.delete(dept.id)">delete</td>
             </tr>
@@ -26,9 +26,12 @@
             <tr id="preferences">
                 <td class="placeholder"></td>
                 <td><input type="button" value=" <<" title="First" ng-click="dc.start = 0"></td>
-                <td><input type="button" value=" <" title="Previous" ng-click="dc.start = dc.start - dc.amount"></td>
-                <td><input type="button" value=" >" title="Next" ng-click="dc.start = dc.start + dc.amount"></td>
-                <td><input type="button" value=" >>" title="Last" ng-click="dc.start = dc.depts.length - dc.amount"></td>
+                <td><input type="button" value=" <" title="Previous" ng-click="dc.start = dc.start - dc.amount.number">
+                </td>
+                <td><input type="button" value=" >" title="Next" ng-click="dc.start = dc.start + dc.amount.number"></td>
+                <td><input type="button" value=" >>" title="Last"
+                           ng-click="dc.start = dc.depts.length - dc.amount.number">
+                </td>
                 <td>Number of rows: <select ng-model="dc.amount"
                                             ng-options="amount.number for amount in dc.amounts"></select>
                 </td>

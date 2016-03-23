@@ -1,4 +1,4 @@
-<div id="admincontent" ng-controller="AdminCtrl as ac">
+<div id="admincontent" ng-controller="AdminCtrl as ac" class="scrollable">
     <h1>Admin Page</h1>
 
     <div>
@@ -23,7 +23,7 @@
             <button ng-click="ac.clickSpeakap()">Speakap</button>
         </div>
     </div>
-    <div ng-if="ac.depts">
+    <div ng-if="ac.dept">
         <div ng-include="'templates/subparts/depts.html'"></div>
 
     </div>
