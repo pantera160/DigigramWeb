@@ -118,10 +118,10 @@ app.controller('EmployeeCtrl', ['DataRESTService', function (DataRESTService) {
     });
 
     self.delete = function ($id) {
-
+        DataRESTService.deleteEmployee($id);
     };
     self.edit = function ($id) {
-        DataRESTService.deleteEmployee($id);
+
     }
 }]);
 

@@ -5,14 +5,38 @@
         <table class="employeesoverview">
             <thead>
             <tr>
-
+                <th>EID</th>
+                <th>First name</th>
+                <th>Last name</th>
+                <th>Email</th>
+                <th>Tel</th>
+                <th>Profile picture URI</th>
+                <th>Birthday</th>
+                <th>Department</th>
+                <th>Next department</th>
+                <th>Intern</th>
+                <th>Employer</th>
+                <th>Project</th>
+                <th></th>
+                <th></th>
             </tr>
             </thead>
             <tbody class="employeesbody">
-            <tr ng-repeat="dept in depts | filter : q | limitTo:ec.start:ec.amount">
-
-                <td ng-click="ec.edit(dept.id)">edit</td>
-                <td ng-click="ec.delete(dept.id)">delete</td>
+            <tr ng-repeat="employee in ec.employees | filter : q | limitTo:ec.start:ec.amount">
+                <td>{{employee.EID}}</td>
+                <td>{{employee.first_name}}</td>
+                <td>{{employee.last_name}}</td>
+                <td>{{employee.email}}</td>
+                <td>{{employee.tel}}</td>
+                <td>{{employee.profilePicURI}}</td>
+                <td>{{employee.birthday}}</td>
+                <td>{{employee.dept_name}}</td>
+                <td>{{employee.next_dept_name}}</td>
+                <td>{{employee.intern}}</td>
+                <td>{{employee.employer_name}}</td>
+                <td>{{employee.project_name}}</td>
+                <td ng-click="ec.edit(employee.EID)">edit</td>
+                <td ng-click="ec.delete(employee.EID)">delete</td>
             </tr>
             </tbody>
         </table>
@@ -39,10 +63,20 @@
     </div>
     <div ng-show="ec.create">
         <form id="myForm" class="block-inline">
-            <input type="text" ng-model="" placeholder="Department name">
-            <input type="text" ng-model="" placeholder="Manager EID">
+            <input type="text" ng-model="ec.newEmployee.EID" placeholder="EID">
+            <input type="text" ng-model="ec.newEmployee.first_name" placeholder="First name">
+            <input type="text" ng-model="ec.newEmployee.last_name" placeholder="Last name">
+            <input type="text" ng-model="ec.newEmployee.email" placeholder="Email">
+            <input type="text" ng-model="ec.newEmployee.tel" placeholder="Tel">
+            <input type="text" ng-model="ec.newEmployee.profilePicURI" placeholder="Profile picture URI">
+            <input type="text" ng-model="ec.newEmployee.birthday" placeholder="Birthday (dd/mm/yyyy)">
+            <input type="text" ng-model="ec.newEmployee.dept_name" placeholder="Department name">
+            <input type="text" ng-model="ec.newEmployee.next_dept_name" placeholder="Next department name">
+            <input type="text" ng-model="ec.newEmployee.intern" placeholder="Intern">
+            <input type="text" ng-model="ec.newEmployee.employer_name" placeholder="Employer">
+            <input type="text" ng-model="ec.newEmployee.project_name" placeholder="Project">
         </form>
-        <input type="button" ng-click="dc.addDept()" value="Save">
-        <input type="button" ng-click="dc.create = false; dc.overview = true;" value="Cancel">
+        <input type="button" ng-click="ec.addDept()" value="Save">
+        <input type="button" ng-click="ec.create = false; ec.overview = true;" value="Cancel">
     </div>
 </div>
