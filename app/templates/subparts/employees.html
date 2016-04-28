@@ -1,4 +1,4 @@
-<div id="subcontent" ng-controller="EmployeesCtrl as ec">
+<div id="subcontent" ng-controller="EmployeeCtrl as ec">
     <div class="col-md-10 col-md-offset-1" ng-show="ec.overview">
         <p>Showing up to {{ec.amount.number}} of {{ec.employees.length}} found results.</p>
         <input type="search" ng-model="q" placeholder="filter name..." aria-label="filter speakap"/>
@@ -22,8 +22,8 @@
             </tr>
             </thead>
             <tbody class="employeesbody">
-            <tr ng-repeat="employee in ec.employees | filter : q | limitTo:ec.start:ec.amount">
-                <td>{{employee.EID}}</td>
+            <tr ng-repeat="employee in ec.employees | filter : q | limitTo:ec.amount.number:ec.start">
+                <td>{{employee.eid.id}}</td>
                 <td>{{employee.first_name}}</td>
                 <td>{{employee.last_name}}</td>
                 <td>{{employee.email}}</td>
@@ -58,7 +58,7 @@
         </table>
 
         <div>
-            <button type="button">Create new employee</button>
+            <button type="button" ng-click="ec.create = true;">Create new employee</button>
         </div>
     </div>
     <div ng-show="ec.create">

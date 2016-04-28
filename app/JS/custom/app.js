@@ -171,7 +171,20 @@ app.service('DataRESTService', function ($http) {
             url: initParams.DBControllerURL + 'newdepartment',
             data: dept
         });
-    }
+    };
+    this.getAllEmployees = function () {
+        return $http({
+            method: 'GET',
+            url: initParams.DBControllerURL + 'employees'
+        })
+    };
+    this.deleteEmployee = function (EID) {
+        return http({
+            method: 'DELETE',
+            url: initParams.DBControllerURL + 'deleteemployee',
+            data: EID
+        })
+    };
 });
 
 app.run(['DataRESTService', 'Breadcrumbs', '$rootScope', function (DataRESTService, Breadcrumbs, $rootScope) {

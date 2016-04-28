@@ -125,3 +125,10 @@ a {
     overflow-x: hidden;
     height: 80vh;
 }
+
+a[href^="tel:"]:before {
+    content: "\260E";
+    margin-right: 0.5em;
+    color: tomato;
+!important;
+}

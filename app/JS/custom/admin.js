@@ -10,7 +10,10 @@ app.controller('AdminCtrl', ['DataRESTService', function (DataRESTService) {
     self.runUpdate = function () {
         resetall();
         self.update = true;
-        DataRESTService.runUpdate();
+        DataRESTService.runUpdate().then(function (result) {
+            self.errors = result.data;
+            self.update = true;
+        });
     };
 
     self.clickDept = function () {
@@ -72,7 +75,7 @@ app.controller('DeptCtrl', ['DataRESTService', function (DataRESTService) {
     var self = this;
     self.overview = true;
     self.create = false;
-    self.newDept = {};
+    self.newDept = {dept_id: 0};
     self.createNew = function () {
         self.overview = false;
         self.create = true;

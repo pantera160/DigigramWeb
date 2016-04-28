@@ -41,13 +41,13 @@
         </table>
 
         <div>
-            <button type="button">Create new department</button>
+            <button type="button" ng-click="dc.create = true;">Create new department</button>
         </div>
     </div>
     <div ng-show="dc.create">
         <form id="myForm" class="block-inline">
-            <input type="text" ng-model="dc.newDept.name" placeholder="Department name">
-            <input type="text" ng-model="dc.newDept.manager" placeholder="Manager EID">
+            <input type="text" ng-model="dc.newDept.dept_name" placeholder="Department name">
+            <input type="text" ng-model="dc.newDept.reportsTo" placeholder="Manager EID">
         </form>
         <input type="button" ng-click="dc.addDept()" value="Save">
         <input type="button" ng-click="dc.create = false; dc.overview = true;" value="Cancel">
